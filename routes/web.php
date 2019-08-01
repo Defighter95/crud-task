@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware('auth', function () {
+Route::middleware('auth')->group(function () {
     Route::post('products', 'ProductController@store')->middleware('can:create,App\Models\Product\Product');
     Route::delete('products/{id}', 'ProductController@destroy')->middleware('can:delete,id');
 
